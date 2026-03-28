@@ -7,6 +7,21 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 
 把模糊研究想法收敛成一套可继续推进的研究包：问题定义、领域路由、文献计划、prior-art 矩阵、候选创新假设、实验方案。
 
+## 快速入口
+
+用户输入进来时，先一眼判断：
+
+| 用户说法 | 第一动作 | 可跳过的步骤 |
+|---|---|---|
+| 给了 DOI / 摘要 / PDF / citation | 直接进入证据抽取 → 卡片 → 矩阵 | 可跳过问题定义和赛道路由 |
+| 只说方向关键词，方向已经清楚 | 确认主赛道 → 直接出检索计划 | 可跳过 workflow 阶段 1-2 |
+| 说"找创新点" | 先确认是否已有文献池；没有则先出检索计划 | 不要跳过 prior-art |
+| 说"做实验方案" | 先确认假设是否清楚；没有则先出 novelty hypotheses | 不要跳过 baseline 设计 |
+| 方向极度模糊或跨多个赛道 | 读 `references/workflow.md` + `references/direction-routing.md` | 不跳 |
+| 已有工作、只要继续某一段 | 直接从用户说的阶段接续，补一句上游假设 | 跳过前置阶段 |
+
+> 能一步判断就不要绕圈子；不确定就只问 1 个最关键问题，不要同时问 3 个。
+
 ## 默认立场
 
 - 先定问题与赛道，再谈综述、创新和实验。
@@ -47,7 +62,7 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 2. 主 / 副赛道路由与关键约束
 3. 文献检索计划
 4. prior-art 摘要或矩阵
-5. 候选新颖性假设
+5. 候选新颖性假设（按 conservative / balanced / bold 三档各给 1 条，让用户按资源和周期选）
 6. 实验计划
 7. 风险、缺口、下一步检索 / 求证动作
 
@@ -67,7 +82,11 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 
 ## 辅助脚本
 
-需要快速搭起 metadata → 卡片脚手架时，可直接跑：
+**什么时候跑脚本**：用户要批量拉一批文献 metadata、或者要从几十篇候选中快速建卡片脚手架时。
+
+**什么时候不需要跑**：只分析 1-5 篇、用户已提供 DOI / PDF、或者只要做方向判断时 — 直接用证据抽取流程即可，不用跑脚本。
+
+可用脚本：
 - `scripts/search_openalex.py`：按 query 拉 OpenAlex metadata 与 OA 线索
 - `scripts/normalize_paper_records.py`：统一 paper schema，重建 abstract 文本
 - `scripts/build_literature_cards.py`：把规范化记录转成文献卡片草稿
