@@ -159,6 +159,13 @@
 | 授权数据库 / 交互式下载 | `Agent Browser` |
 | 批量 metadata → 卡片脚手架 | `scripts/search_openalex.py` → `normalize_paper_records.py` → `build_literature_cards.py` |
 
+### 最低配 fallback（当上面这些能力在当前 runtime 不可用时）
+
+- **公开检索入口**：先用内置 web search（或普通网页搜索）找 DOI、作者主页、publisher landing page、project page。
+- **公开正文抓取**：先试内置 web fetch；如果被网络策略、publisher 跳转或 PDF / JS 页面卡住，再退回 `exec` + `curl` 做公开 OA 页面或 landing page 的最小取证。
+- **本地整理**：继续回到本 skill 自带脚本链路做 metadata 标准化、卡片脚手架与 shortlist 收敛，不要因为缺某个高级搜索 / 浏览 skill 就停在空白状态。
+- **边界不变**：fallback 只用于公开信息、开放获取、已授权访问；不改变 paywall / 登录合规边界。
+
 ## 3. 最低交付
 
 每轮 retrieval 至少交付：

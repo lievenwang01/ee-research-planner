@@ -35,9 +35,10 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 2. 再路由主赛道：
    - power / energy systems
    - power electronics & drives
-   - communications / signal processing
+   - communications / signal processing / biomedical signals
    - circuits / chips / EDA
    - embedded / IoT / control
+   - ECG / EEG / EMG、可穿戴生理信号分析、医学时序分类这类题，默认先落到 communications / signal processing；只有当主要贡献承载层明显在端侧部署、闭环控制或设备系统联动时，再转到 embedded / IoT / control。
 3. 如果用户表达很虚、赛道不清或跨领域，先读：
    - `references/workflow.md`
    - `references/direction-routing.md`

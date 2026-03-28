@@ -76,9 +76,11 @@
 **常见触发词**
 - 调制编码、信道估计、检测、均衡、MIMO、OFDM、语义通信
 - 雷达、阵列、波束赋形、目标检测、时频分析、压缩感知、滤波、估计
+- ECG / EEG / EMG、生理信号、心拍分类、心律失常识别、可穿戴 biosignal、医学时序分类
 
 **通常在研究什么**
 - waveform、receiver、channel / interference modeling、estimation / detection、signal representation、joint comm-sensing
+- 也包括以信号表示、特征提取、时序建模、鲁棒分类 / 检测为主的 biomedical signal processing 题目；如果主要贡献承载层在算法、表征、泛化或评估协议，先留在这条赛道
 
 **优先问清 4 件事**
 - 场景是无线通信、雷达、感知，还是联合通信感知。
