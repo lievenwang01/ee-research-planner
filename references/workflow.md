@@ -107,7 +107,10 @@
 
 可直接套：
 - `../assets/literature-card-template.md`
+- `../assets/literature-evidence-pack-template.md`
 - `../assets/innovation-matrix-template.md`
+
+需要把 abstract / 网页 / PDF 进一步压成可横向比较的字段时，继续读 `evidence-extraction.md`。
 
 **输出**
 - 6-12 篇核心文献的 grouped summary 或矩阵

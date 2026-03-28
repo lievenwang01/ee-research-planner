@@ -31,7 +31,9 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 5. 遇到已较具体、但很容易被写泛的常见子方向时，读：
    - `references/domain-starters.md`
 6. 需要深入展开时按需读：
-   - 文献检索：`references/literature-strategy.md`
+   - 文献检索式与收敛：`references/literature-strategy.md`
+   - 分层证据获取 / 工具路由：`references/retrieval-pipeline.md`
+   - 结构化证据抽取：`references/evidence-extraction.md`
    - prior-art framing（最近邻与缺口叙述）：`references/prior-art-framing.md`
    - 创新分析：`references/innovation-analysis.md`
    - 实验设计：`references/experiment-design.md`
@@ -57,10 +59,20 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 - `assets/direction-brief-template.md`
 - `assets/literature-plan-template.md`
 - `assets/literature-card-template.md`
+- `assets/literature-evidence-pack-template.md`
 - `assets/innovation-matrix-template.md`
 - `assets/prior-art-framing-template.md`
 - `assets/novelty-hypotheses-template.md`
 - `assets/experiment-plan-template.md`
+
+## 辅助脚本
+
+需要快速搭起 metadata → 卡片脚手架时，可直接跑：
+- `scripts/search_openalex.py`：按 query 拉 OpenAlex metadata 与 OA 线索
+- `scripts/normalize_paper_records.py`：统一 paper schema，重建 abstract 文本
+- `scripts/build_literature_cards.py`：把规范化记录转成文献卡片草稿
+
+这些脚本是 metadata-first helper，不会自动完成全文抓取或深度证据抽取。
 
 ## 完成标准
 
