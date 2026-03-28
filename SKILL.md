@@ -70,7 +70,18 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 
 ## 模板
 
-需要稳定产物时，优先复用：
+按任务类型选模板组合，不要每次全上：
+
+| 用户要的产物 | 必用模板 | 可选模板 |
+|---|---|---|
+| 开题 / 选题 | `direction-brief-template` + `literature-plan-template` + `novelty-hypotheses-template` | `prior-art-framing-template` |
+| 综述 / 文献调研 | `literature-plan-template` + `literature-card-template` + `literature-evidence-pack-template` | `innovation-matrix-template` |
+| 找创新点 | `innovation-matrix-template` + `novelty-hypotheses-template` | `prior-art-framing-template` |
+| 实验方案 | `experiment-plan-template` | `novelty-hypotheses-template`（确认假设用） |
+| 吸收单篇 / 几篇论文 | `literature-card-template` | `literature-evidence-pack-template` |
+| 完整研究包 | 全部 8 个，按交付顺序依次填 | — |
+
+所有模板路径：
 - `assets/direction-brief-template.md`
 - `assets/literature-plan-template.md`
 - `assets/literature-card-template.md`
@@ -95,9 +106,28 @@ description: Plan 电气类 / 电子信息类 academic research from a vague ide
 
 ## 完成标准
 
-当输出已经满足以下几点时可结束：
+按任务类型判断，不要等到全部 7 段都完成才收束：
+
+| 任务类型 | 完成判据 |
+|---|---|
+| 开题 / 选题 | direction brief 有具体约束 + 主赛道明确 + 至少 2 条可操作假设 + 检索计划可执行 |
+| 综述 / 文献调研 | 检索轴完整 + shortlist 有 8-15 篇 + 每篇有用途标签和证据等级 + 主流方向已分组 |
+| 找创新点 | prior-art matrix 显出缺口 + 3 档假设各有最近邻对应 + 每条有风险标签 |
+| 实验方案 | 假设已绑定 + baseline / 指标 / 平台明确 + MVP 包可立刻开始 + 资源风险已列出 |
+| 吸收单篇 / 几篇 | 每篇有 9 字段卡片 + 证据等级标注 + 对当前问题的 novelty risk 判断 |
+
+全流程完成标准（研究包）：
 - 问题边界清楚，不再停留在泛方向口号。
 - 主赛道与验证层级明确。
 - 检索路径和 prior-art 对比框架明确。
-- 候选创新点能对应最近邻工作与验证方法。
+- 候选创新点能对应最近邻工作，且通过反证检查（见 `references/innovation-analysis.md` §6）。
 - 至少有一个可执行实验方案雏形。
+
+## 推进卡住时的兜底规则
+
+如果用户连续澄清后方向仍然不清晰，不要继续追问。强制执行：
+1. 选一个最保守的问题解读，写出 direction brief 草稿。
+2. 注明"以下基于我对你问题的暂定理解，请确认或修正"。
+3. 给出 3 个"如果你其实是想做 X / Y / Z，我们需要往哪个方向调整"的选项。
+
+不要让对话停在反复问问题上；给出最小产物比持续追问更有价值。
