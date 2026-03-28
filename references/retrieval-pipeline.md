@@ -110,7 +110,7 @@
 适合：
 - 关键词还不稳定时做语义扩展
 - 找 research-paper / PDF / GitHub / author page / company or lab 页面
-- 找“某问题 + 某约束”下的近邻网页与论文入口
+- 找”某问题 + 某约束”下的近邻网页与论文入口
 
 强项：召回好，适合从模糊 query 找 paper 邻域。
 
@@ -134,7 +134,7 @@
 - 先对 OA PDF、用户提供 PDF、长网页做高密度摘要
 - 在精读前先拿一版结构化 overview
 
-强项：对长文和本地文件很省时间，是“已拿到材料后”的压缩工具。
+强项：对长文和本地文件很省时间，是”已拿到材料后”的压缩工具。
 
 不要把它当成：metadata 搜索器。先找材料，再 summarize。
 
@@ -151,11 +151,13 @@
 
 ### 推荐组合
 
-- **metadata bootstrapping**：`scripts/search_openalex.py` → `normalize_paper_records.py` → `build_literature_cards.py`
-- **语义扩词 + 找入口**：`exa` + 本 skill 的 literature plan
-- **公开网页正文 / OA 项目页**：`jina-reader`
-- **已拿到 URL / PDF 后的快速压缩**：`summarize`
-- **授权数据库 / 交互式下载 / 登录态页面**：`Agent Browser`
+| 场景 | 推荐工具组合 |
+|---|---|
+| 关键词扩展 + 找文献入口 | `exa` |
+| 读公开网页 / OA 页 / 项目页 | `jina-reader` |
+| 已拿到 URL / PDF 后快速压缩 | `summarize` |
+| 授权数据库 / 交互式下载 | `Agent Browser` |
+| 批量 metadata → 卡片脚手架 | `scripts/search_openalex.py` → `normalize_paper_records.py` → `build_literature_cards.py` |
 
 ## 3. 最低交付
 
