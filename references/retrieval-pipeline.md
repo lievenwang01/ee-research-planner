@@ -103,50 +103,61 @@
 
 这一条通常是最快进入 deep-read 的入口。
 
-## 2. 工具路由
+## 2. 工具 / skill 路由
 
-### `WebSearch`
+### `exa`
 
 适合：
 - 关键词还不稳定时做语义扩展
-- 找 research-paper / PDF / GitHub / author page / company or lab 页面入口
-- 找”某问题 + 某约束”下的近邻网页与论文标题列表
+- 找 research-paper / PDF / GitHub / author page / company or lab 页面
+- 找”某问题 + 某约束”下的近邻网页与论文入口
 
-强项：召回广，适合从模糊 query 找 paper 邻域和验证关键词覆盖。
+强项：召回好，适合从模糊 query 找 paper 邻域。
 
-不要把它当成：全文精读工具。找到入口后，仍要回到卡片、矩阵和证据抽取。
+不要把它当成：正文精读工具。找到入口后，仍要回到卡片、矩阵和证据抽取。
 
-### `WebFetch`
+### `jina-reader`
 
 适合：
-- 读取已知 URL 的公开网页、landing page、作者主页、project page、arXiv 页面
-- 从 article / lab / repository 页面抽取可读正文
+- 读取公开网页、landing page、作者主页、project page
+- 用 search mode 做网页级检索并直接拿干净正文
+- 从 article / lab / repository 页面抽取可读 markdown
 
-强项：对静态公开页面提取干净，适合补 OA 页面与项目页细节、抓取作者公开的 accepted manuscript。
+强项：网页提取干净，适合补 OA 页面与项目页细节；也适合在不想暴露本机出口 IP 时读取网页。
 
-不要把它当成：受限数据库登录器（IEEE/ACM paywall 页面拿不到全文）。
+不要把它当成：受限数据库登录器，或本地 PDF 深度解析器。
 
-### 本地 PDF / 用户提供文件
+### `summarize`
 
-用户提供 PDF 或本地路径时，用 `Read` 工具直接读取。优先走 user-provided lane，不再额外搜索。
+适合：
+- 已经拿到 URL 或本地 PDF 后，快速做长文压缩
+- 先对 OA PDF、用户提供 PDF、长网页做高密度摘要
+- 在精读前先拿一版结构化 overview
 
-读完后直接进入 evidence extraction；不需要先 summarize 再精读，一步到位即可。
+强项：对长文和本地文件很省时间，是”已拿到材料后”的压缩工具。
 
-### 批量 metadata 获取
+不要把它当成：metadata 搜索器。先找材料，再 summarize。
 
-用 `scripts/search_openalex.py` 批量拉 metadata，再用后续脚本标准化和建卡片。适合需要处理 20+ 篇候选的场景。
+### `Agent Browser`
 
-单篇或少量文献直接用 `WebSearch` + `WebFetch` + 手动卡片，不必跑脚本。
+适合：
+- 需要登录、点击、翻页、下载、展开引用、切换标签页
+- 用户已授权访问的 IEEE Xplore / publisher / library 页面
+- 页面强依赖 JS，普通抓取拿不到内容
+
+强项：交互式网页自动化；可在已授权会话里完成合法 retrieval。
+
+升级条件：静态公开页优先用 `jina-reader`；只有遇到登录、复杂 JS 或必须点击导出时再升级到 `Agent Browser`。
 
 ### 推荐组合
 
 | 场景 | 推荐工具组合 |
 |---|---|
-| 关键词扩展 + 找文献入口 | `WebSearch` |
-| 读公开网页 / OA 页 / 项目页 | `WebFetch` |
-| 用户提供 PDF / 本地文件 | `Read` |
+| 关键词扩展 + 找文献入口 | `exa` |
+| 读公开网页 / OA 页 / 项目页 | `jina-reader` |
+| 已拿到 URL / PDF 后快速压缩 | `summarize` |
+| 授权数据库 / 交互式下载 | `Agent Browser` |
 | 批量 metadata → 卡片脚手架 | `scripts/search_openalex.py` → `normalize_paper_records.py` → `build_literature_cards.py` |
-| 已授权数据库正文（用户自行登录后提供内容） | 接收用户粘贴的内容，进入证据抽取流程 |
 
 ## 3. 最低交付
 
